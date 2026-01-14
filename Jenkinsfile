@@ -1,13 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        APP_NAME = "sales-app"
-    }
-
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -15,9 +11,11 @@ pipeline {
 
         stage('Maven Build') {
             steps {
-                sh '''
-                mvn clean package -DskipTests
-                '''
+                dir('saleserp') {
+                    sh '''
+                    mvn clean package -DskipTests
+                    '''
+                }
             }
         }
 
@@ -41,7 +39,7 @@ pipeline {
 
     post {
         success {
-            echo '✅ Sales ERP deployed successfully'
+            echo '✅ Pipeline completed successfully'
         }
         failure {
             echo '❌ Pipeline failed'
