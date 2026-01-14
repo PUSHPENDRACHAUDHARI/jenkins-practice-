@@ -11,7 +11,7 @@ pipeline {
 
         stage('Maven Build') {
             steps {
-                dir('saleserp') {
+                dir('sales') {
                     sh '''
                     mvn clean package -DskipTests
                     '''
