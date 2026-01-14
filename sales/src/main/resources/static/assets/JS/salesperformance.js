@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = { projectId, itTeam, startDate, endDate };
 
-      const response = await fetch("http://localhost:9090/api/allocations", {
+      const response = await fetch("http://54.196.151.15:8081/api/allocations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -251,3 +251,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
