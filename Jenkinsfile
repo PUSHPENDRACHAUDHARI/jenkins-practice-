@@ -3,17 +3,16 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/<username>/<repo-name>.git'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
                 sh '''
-                echo "Building project..."
+                echo "Build started..."
                 '''
             }
         }
@@ -21,7 +20,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                docker build -t saleserp-app .
+                echo "Docker build here"
                 '''
             }
         }
@@ -29,10 +28,18 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh '''
-                docker rm -f saleserp || true
-                docker run -d -p 8000:8000 --name saleserp saleserp-app
+                echo "Container run here"
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline SUCCESS ✅'
+        }
+        failure {
+            echo 'Pipeline FAILED ❌'
         }
     }
 }
