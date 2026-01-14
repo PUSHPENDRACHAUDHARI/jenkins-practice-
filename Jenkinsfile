@@ -1,34 +1,39 @@
 pipeline {
     agent any
 
+    environment {
+        APP_NAME = "sales-app"
+    }
+
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Maven Build') {
             steps {
                 sh '''
-                echo "Build started..."
+                mvn clean package -DskipTests
                 '''
             }
         }
 
-        stage('Docker Build') {
+        stage('Docker Compose Build') {
             steps {
                 sh '''
-                echo "Docker build here"
+                docker compose build
                 '''
             }
         }
 
-        stage('Run Container') {
+        stage('Docker Compose Deploy') {
             steps {
                 sh '''
-                echo "Container run here"
+                docker compose down || true
+                docker compose up -d
                 '''
             }
         }
@@ -36,10 +41,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline SUCCESS ✅'
+            echo '✅ Sales ERP deployed successfully'
         }
         failure {
-            echo 'Pipeline FAILED ❌'
+            echo '❌ Pipeline failed'
         }
     }
 }
