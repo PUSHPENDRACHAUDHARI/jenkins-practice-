@@ -13,7 +13,7 @@ pipeline {
 
         stage('Docker Compose Build') {
             steps {
-                dir('.') {
+                dir('sales') {
                     sh 'docker compose build'
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Docker Compose Deploy') {
             steps {
-                dir('.') {
+                dir('sales') {
                     sh '''
                     docker compose down || true
                     docker compose up -d
