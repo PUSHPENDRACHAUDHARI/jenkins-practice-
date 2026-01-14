@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
-      const API_BASE = 'http://localhost:9090';
+      const API_BASE = 'http://54.196.151.15:8081';
       const res = await fetch(API_BASE + '/api/v1/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -88,3 +88,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
