@@ -89,7 +89,7 @@ async function runFilterAndApply() {
   // First attempt: server-side filter
   if (qs) {
     try {
-      const url = `http://localhost:9090/projects/filter${qs ? `?${qs}` : ""}`;
+      const url = `http://54.196.151.15:8081/projects/filter${qs ? `?${qs}` : ""}`;
       console.log("[Filters] Requesting filtered projects from", url);
       const res = await fetch(url);
       if (res.ok) {
@@ -188,7 +188,7 @@ let barChart = null;
 // ============================
 async function loadProjects() {
   try {
-    const res = await fetch("http://localhost:9090/projects/all");
+    const res = await fetch("http://54.196.151.15:8081/projects/all");
     const data = await res.json();
 
     allProjects = data;
@@ -232,10 +232,10 @@ function renderProjectTable(data) {
 async function loadAllCharts() {
   try {
     const [typeRes, statusRes, clientRes, overtimeRes] = await Promise.all([
-      fetch("http://localhost:9090/projects/group-by-type").then(r => r.json()),
-      fetch("http://localhost:9090/projects/group-by-status").then(r => r.json()),
-      fetch("http://localhost:9090/projects/group-by-client").then(r => r.json()),
-      fetch("http://localhost:9090/projects/over-time").then(r => r.json())
+      fetch("http://54.196.151.15:8081/projects/group-by-type").then(r => r.json()),
+      fetch("http://54.196.151.15:8081/projects/group-by-status").then(r => r.json()),
+      fetch("http://54.196.151.15:8081/projects/group-by-client").then(r => r.json()),
+      fetch("http://54.196.151.15:8081/projects/over-time").then(r => r.json())
     ]);
 
     renderCharts(overtimeRes);
@@ -370,3 +370,4 @@ function loadClientBarChart(data) {
 document.addEventListener("DOMContentLoaded", () => {
   loadProjects();
 });
+
