@@ -1,5 +1,5 @@
 // ------------ BASE URL -------------
-const BASE = "http://localhost:9090/api/v1/dashboard";
+const BASE = "http://54.196.151.15:8081/api/v1/dashboard";
 
 let salesChart = null;
 let topPerformanceChart = null;
@@ -275,3 +275,4 @@ setInterval(() => {
     loadRecentSales();
     loadTopPerformers();
 }, 30000);
+
