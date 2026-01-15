@@ -1,5 +1,5 @@
 // ------------ BASE URL -------------
-const BASE = "http://54.196.151.15:8081/api/v1/dashboard";
+const BASE = "http://13.201.180.224:8081/api/v1/dashboard";
 
 let salesChart = null;
 let topPerformanceChart = null;

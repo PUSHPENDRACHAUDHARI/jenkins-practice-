@@ -19,6 +19,6 @@ app.get('/', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running at http://54.196.151.15:${PORT}`);
+  console.log(`Server running at http://13.201.180.224:${PORT}`);
 });
 

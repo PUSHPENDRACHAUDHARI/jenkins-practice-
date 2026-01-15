@@ -19,7 +19,7 @@ if (document.readyState === 'loading') {
     checkAuth();
 }
 
-const API_BASE = "http://54.196.151.15:8081/api/v1/employees";
+const API_BASE = "http://13.201.180.224:8081/api/v1/employees";
 
 // Helper function to get auth headers
 function getAuthHeaders() {
@@ -46,9 +46,9 @@ async function loadWeeklySummary() {
             'Content-Type': 'application/json'
         } : {};
         
-        console.log("📡 Fetching from database: http://54.196.151.15:8081/api/v1/employees/weekly-summary");
+        console.log("📡 Fetching from database: http://13.201.180.224:8081/api/v1/employees/weekly-summary");
         
-        const res = await fetch("http://54.196.151.15:8081/api/v1/employees/weekly-summary", {
+        const res = await fetch("http://13.201.180.224:8081/api/v1/employees/weekly-summary", {
             headers: headers
         });
         
@@ -339,7 +339,7 @@ async function loadPieChart() {
         const headers = token ? { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
 
         console.log('📡 Fetching disposition summary from API');
-        const res = await fetch('http://54.196.151.15:8081/api/calls/disposition-summary', { headers });
+        const res = await fetch('http://13.201.180.224:8081/api/calls/disposition-summary', { headers });
 
         if (!res.ok) {
             throw new Error(`HTTP ${res.status}`);
@@ -691,7 +691,7 @@ if (dailyCallForm) {
       
       // Function to submit call details
       const submitCallDetails = () => {
-        return fetch("http://54.196.151.15:8081/api/calls", {
+        return fetch("http://13.201.180.224:8081/api/calls", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -722,7 +722,7 @@ if (dailyCallForm) {
           createdDate: document.getElementById("lead_date").value
         };
         
-        return fetch("http://54.196.151.15:8081/leads", {
+        return fetch("http://13.201.180.224:8081/leads", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
