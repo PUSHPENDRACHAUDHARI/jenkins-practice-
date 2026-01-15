@@ -9,6 +9,7 @@ let sourceChart = null;
 let conversionChart = null;
 
 // Backend Base URL
+<<<<<<< HEAD
 const BASE = "http://13.201.180.224:8081/leads";
 
 // Utility: safe chart destroy
@@ -228,4 +229,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Auto-refresh every 60 sec
 setInterval(() => initDashboard(), 60000);
+
 
